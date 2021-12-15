@@ -22,7 +22,7 @@ class TestController {
 
     @GetMapping("/hello")
     fun hello(@RequestParam(defaultValue = "param") param: String?): String {
-        return testService!!.hello(param!!)
+        return testService!!.Hello(param!!)
     }
 
     @GetMapping("/thread")
@@ -33,7 +33,7 @@ class TestController {
         val list = arrayOfNulls<CompletableFuture<Unit?>>(1000)
         for (i in 0..999) {
             val job = CompletableFuture.supplyAsync({
-                println("$i " + testService!!.hello(param!!))
+                println("$i " + testService!!.Hello(param!!))
             }, threadPool)
             list[i] = job
         }
@@ -51,7 +51,7 @@ class TestController {
         val executor = Dispatchers.IO.asExecutor()
         for (i in 0..999) {
             val job = GlobalScope.launch(Dispatchers.IO) {
-                println("$i " + testService!!.hello(param!!))
+                println("$i " + testService!!.Hello(param!!))
             }
             list.add(job)
         }

@@ -9,7 +9,7 @@ import org.apache.dubbo.config.annotation.Service
  */
 @Service
 class TestServiceImpl : TestService {
-    override fun hello(param: String): String {
+    override fun Hello(param: String): String {
         try {
             //模拟耗时操作
             Thread.sleep(1000)

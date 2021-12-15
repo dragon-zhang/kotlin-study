@@ -5,5 +5,5 @@ package com.example.demo
  * @date 2021/12/1 21:08
  */
 interface TestService {
-    fun hello(param: String): String
+    fun Hello(param: String): String
 }
