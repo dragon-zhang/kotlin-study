@@ -23,4 +23,4 @@ dubbo:
   scan:
     base-packages: com.example.demo
   provider:
-    threads: 1000
+    threads: 900

@@ -31,7 +31,7 @@ class TestController {
         val threadPool: ThreadPoolExecutor = Executors.newFixedThreadPool(1000) as ThreadPoolExecutor
         threadPool.prestartAllCoreThreads()
         val list = arrayOfNulls<CompletableFuture<Unit?>>(1000)
-        for (i in 0..999) {
+        for (i in 0..899) {
             val job = CompletableFuture.supplyAsync({
                 println("$i " + testService!!.Hello(param!!))
             }, threadPool)
@@ -49,7 +49,7 @@ class TestController {
         val start = System.currentTimeMillis()
         val list = LinkedList<Job>()
         val executor = Dispatchers.IO.asExecutor()
-        for (i in 0..999) {
+        for (i in 0..899) {
             val job = GlobalScope.launch(Dispatchers.IO) {
                 println("$i " + testService!!.Hello(param!!))
             }
