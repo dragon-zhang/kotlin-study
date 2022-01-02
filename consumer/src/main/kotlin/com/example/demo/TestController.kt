@@ -2,6 +2,8 @@ package com.example.demo
 
 import kotlinx.coroutines.*
 import org.apache.dubbo.config.annotation.DubboReference
+import org.apache.dubbo.demo.DemoService
+import org.apache.dubbo.demo.HelloRequest
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
@@ -20,9 +22,19 @@ class TestController {
     @DubboReference(timeout = 9999, check = false)
     private val testService: TestService? = null
 
+    @DubboReference(timeout = 9999, check = false)
+    private val demoService: DemoService? = null
+
     @GetMapping("/hello")
     fun hello(@RequestParam(defaultValue = "param") param: String?): String {
         return testService!!.Hello(param!!)
+    }
+
+    @GetMapping("/protobuf")
+    fun protobuf(): String {
+        val request = HelloRequest.newBuilder().setName("Hello").build()
+        val reply = demoService!!.sayHello(request)
+        return reply!!.message
     }
 
     @GetMapping("/thread")
