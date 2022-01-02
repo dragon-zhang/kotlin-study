@@ -17,17 +17,22 @@
 
 package com.example.demo.impl;
 
+import com.example.demo.UserProvider;
 import com.example.demo.model.Gender;
 import com.example.demo.model.Response;
 import com.example.demo.model.User;
-import com.example.demo.UserProvider;
-import org.apache.dubbo.config.annotation.Service;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-@Service
+@DubboService
 public class UserProviderImpl implements UserProvider {
     // private static final Logger logger = LoggerFactory.getLogger(getClass()); // Only output to dubbo's log(logs/server.log)
     private static final Logger LOG = LoggerFactory.getLogger("userLogger"); // Output to com.dubbogo.user-server.log

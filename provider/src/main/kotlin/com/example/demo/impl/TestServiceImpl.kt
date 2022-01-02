@@ -1,13 +1,13 @@
 package com.example.demo.impl
 
 import com.example.demo.TestService
-import org.apache.dubbo.config.annotation.Service
+import org.apache.dubbo.config.annotation.DubboService
 
 /**
  * @author HaiLang
  * @date 2021/12/1 21:09
  */
-@Service
+@DubboService
 class TestServiceImpl : TestService {
     override fun Hello(param: String): String {
         try {

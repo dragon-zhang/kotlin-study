@@ -1,7 +1,7 @@
 package com.example.demo
 
 import kotlinx.coroutines.*
-import org.apache.dubbo.config.annotation.Reference
+import org.apache.dubbo.config.annotation.DubboReference
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
@@ -17,7 +17,7 @@ import java.util.concurrent.ThreadPoolExecutor
 @RestController
 class TestController {
 
-    @Reference(timeout = 9999, check = false)
+    @DubboReference(timeout = 9999, check = false)
     private val testService: TestService? = null
 
     @GetMapping("/hello")
@@ -37,7 +37,7 @@ class TestController {
             }, threadPool)
             list[i] = job
         }
-        CompletableFuture.allOf(*list).join()
+        CompletableFuture.allOf(*list.filter { it != null }.toTypedArray()).join()
         val done = System.currentTimeMillis() - start
         println("thread cost " + done + "ms")
         return done
