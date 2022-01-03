@@ -14,7 +14,7 @@ import java.util.concurrent.CompletableFuture;
  * @author HaiLang
  * @date 2022/1/2 18:47
  */
-@DubboService(protocol = {"protobuf"})
+@DubboService(protocol = {"tri"})
 public class DemoServiceImpl implements DemoService {
     private static final Logger logger = LoggerFactory.getLogger(DemoServiceImpl.class);
 

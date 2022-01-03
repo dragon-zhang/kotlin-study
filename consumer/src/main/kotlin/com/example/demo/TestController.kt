@@ -30,7 +30,7 @@ class TestController {
         return testService!!.Hello(param!!)
     }
 
-    @GetMapping("/protobuf")
+    @GetMapping("/tri")
     fun protobuf(): String {
         val request = HelloRequest.newBuilder().setName("Hello").build()
         val reply = demoService!!.sayHello(request)
